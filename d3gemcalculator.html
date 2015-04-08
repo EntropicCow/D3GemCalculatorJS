@@ -1,0 +1,95 @@
+<!-- If you're reading this, well, hello.
+Code by Jose Araujo 2014 derived from my C# project
+Feel free to use but give credit. -->
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- this is where we call the javascript code file, very important!-->
+<script type="text/javascript" src="D3GemCalculator.js"></script>
+</head>
+<body>
+<h1 style="text-align:center;">D3 Gem Calculator</h1>
+<br>
+<form style="text-align:center;">
+
+Gem Type Used <!-- listbox for gem type being used-->
+<select id="mygemtypeused">
+<option value="0">Chipped</option>
+<option value="1">Flawed</option>
+<option value="2">Normal</option>
+<option value="3">Flawless</option>
+<option value="4">Perfect</option>
+<option value="5">Radiant</option>
+<option value="6">Square</option>
+<option value="7">Flawless Square</option>
+<option value="8">Perfect Square</option>
+<option value="9">Radiant Square</option>
+<option value="10">Star</option>
+<option value="11">Flawless Star</option>
+<option value="12">Perfect Star</option>
+<option value="13">Radiant Star</option>
+<option value="14">Marquise</option>
+<option value="15">Imperial</option>
+<option value="16">Flawless Imperial</option>
+<option value="17">Royal</option>
+<option value="18">Flawless Royal</option>
+</select>
+
+<br><br>
+Gem Type Desired <!-- listbox for gem type desired-->
+<select id="mygemtypewanted">
+<option value="0">Chipped</option>
+<option value="1">Flawed</option>
+<option value="2">Normal</option>
+<option value="3">Flawless</option>
+<option value="4">Perfect</option>
+<option value="5">Radiant</option>
+<option value="6">Square</option>
+<option value="7">Flawless Square</option>
+<option value="8">Perfect Square</option>
+<option value="9">Radiant Square</option>
+<option value="10">Star</option>
+<option value="11">Flawless Star</option>
+<option value="12">Perfect Star</option>
+<option value="13">Radiant Star</option>
+<option value="14">Marquise</option>
+<option value="15">Imperial</option>
+<option value="16">Flawless Imperial</option>
+<option value="17">Royal</option>
+<option value="18">Flawless Royal</option>
+</select>
+<br><br>
+How Many?
+<!-- text field for entering amount wanted, maxlength is to keep intput sane-->
+<input type="text" maxlength="6" id="amountwanted"></text> 
+
+<!-- tiny script so that enter key works on the number field-->
+
+<script>
+document.getElementById('amountwanted').onkeypress = function(e){
+    if (!e) e = window.event;
+    var keyCode = e.keyCode || e.which;
+    if (keyCode == '13'){
+      // Enter pressed
+    Calculate();
+      return false;
+    }
+  }
+</script>
+
+<!-- calculate and about buttons-->
+
+<input type="button" onclick="Calculate()" value="Calculate"></button> <input type="button" onclick="About()" value="About"></button>
+<br><br>
+<p id="gemresult"></p>
+<p id="goldresult"></p>
+<p id="deathsbreathresult"></p>
+<p id="timeresult"></p>
+</form>
+<br><br>
+
+
+
+</body>
+</html>
