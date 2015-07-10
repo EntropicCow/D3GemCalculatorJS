@@ -4,11 +4,11 @@ with some code clips from random online sources
 feel free to use but give credit where credit is due.
 */
 // all the data needed to calculate gem stuff is here, also names of gems
-var GemText = [2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3];
-var GoldText = [10, 25, 40, 55, 70, 85, 100, 5000, 10000, 20000, 30000, 50000, 75000, 100000, 200000, 300000, 400000, 500000];
-var DeathsBreathText = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1];
-var GemUsed = ["Chipped", "Flawed", "Normal", "Flawless", "Perfect", "Radiant", "Square", "Flawless Square", "Perfect Square", "Radiant Square", "Star", "Flawless Star", "Perfect Star", "Radiant Star", "Marquise", "Imperial", "Flawless Imperial", "Royal", "Flawless Royal"];
-var GemDesired = ["Chipped", "Flawed", "Normal", "Flawless", "Perfect", "Radiant", "Square", "Flawless Square", "Perfect Square", "Radiant Square", "Star", "Flawless Star", "Perfect Star", "Radiant Star", "Marquise", "Imperial", "Flawless Imperial", "Royal", "Flawless Royal"];
+var GemText = [2, 2, 2, 3, 3, 3, 3, 3, 3];
+var GoldText = [2500, 5000, 10000, 20000, 25000, 200000, 300000, 400000, 500000];
+var DeathsBreathText = [0, 0, 0, 0, 0, 0, 0, 1, 1];
+var GemUsed = ["Normal", "Flawless", "Square", "Flawless Square", "Star", "Marquise", "Imperial", "Flawless Imperial", "Royal", "Flawless Royal"];
+var GemDesired = ["Normal", "Flawless", "Square", "Flawless Square", "Star", "Marquise", "Imperial", "Flawless Imperial", "Royal", "Flawless Royal"];
 
 var goldtotal = 0;
 var gemtotal = 0;
@@ -43,8 +43,8 @@ var result = 0, i = 0;
         }
 return numberWithCommas(result * z);
 }
-//time needed to process batch. TODO: work on output formatting maybe.
-function CalculateTime(x, y, z) {
+//time needed to process batch. TODO: work on output formatting maybe. No longer used.
+/*function CalculateTime(x, y, z) {
 var seconds = 0, minutes = 0, hours = 0, result = 0, timepercombine = 3, i = 0;
 
     for (i = x; i < y; i++)
@@ -58,7 +58,7 @@ hours = Math.floor(result / 60 / 60);
 
    
 return ("Total Time: " + numberWithCommas(hours) + ":" + minutes + ":" + seconds)
-}
+}*/
 // this is where the magic happens. sanity check code and calling calculation functions using output to modify html.
  function Calculate() {
  var typeused = document.getElementById("mygemtypeused").selectedIndex;
@@ -107,11 +107,12 @@ return ("Total Time: " + numberWithCommas(hours) + ":" + minutes + ":" + seconds
     gemtotal = CalculateGems(typeused, typewanted, amountwanted);
     goldtotal = CalculateGold(typeused, typewanted, amountwanted);
     deathsbreathtotal = CalculateDeathsBreath(typeused, typewanted, amountwanted);
-    timetotal = CalculateTime(typeused, typewanted, amountwanted);
-    document.getElementById("gemresult").innerHTML = gemtotal + " " + GemUsed[typeused] + " needed to make " + amountwanted + " " + GemDesired[typewanted];
-    document.getElementById("goldresult").innerHTML = goldtotal + " " + " gold needed to make " + amountwanted + " " + GemDesired[typewanted];
-    document.getElementById("deathsbreathresult").innerHTML = deathsbreathtotal + " Death's Breath needed to make  " + amountwanted + " " + GemDesired[typewanted];
-    document.getElementById("timeresult").innerHTML = timetotal;
+    //timetotal = CalculateTime(typeused, typewanted, amountwanted);
+    document.getElementById("gemresult").innerHTML = gemtotal + " " + GemUsed[typeused] + " Gems";
+    document.getElementById("goldresult").innerHTML = goldtotal + " " + " Gold ";
+    document.getElementById("deathsbreathresult").innerHTML = deathsbreathtotal + " Death's Breath";
+	document.getElementById("finaloutput").innerHTML = "Needed to make  " + amountwanted + " " + GemDesired[typewanted] + " using" + " " + GemUsed[typeused] + "."
+    //document.getElementById("timeresult").innerHTML = timetotal;
 }
 // put commas in large numbers
 function numberWithCommas(x) {
